@@ -1,0 +1,9 @@
+spring:
+    application:
+        name: transaction
+    profiles:
+        active: local
+
+app:
+    description: "Emazon's Stock Microservice API"
+    version: "0.0.1"
