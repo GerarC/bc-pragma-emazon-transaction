@@ -2,7 +2,6 @@ package com.emazon.transaction.configuration.feign;
 
 import feign.RequestInterceptor;
 import feign.RequestTemplate;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
@@ -18,7 +17,7 @@ public class FeignInterceptor implements RequestInterceptor {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if(authentication != null && authentication.getPrincipal() != null) {
             User user = (User) authentication.getPrincipal();
-            requestTemplate.header(AUTHORIZATION_HEADER, "Bearer " + user.getPassword());
+            requestTemplate.header(AUTHORIZATION_HEADER, TOKEN_TYPE + user.getPassword());
         }
     }
 
