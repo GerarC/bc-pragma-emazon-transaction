@@ -1,23 +1,21 @@
 package com.emazon.transaction.configuration.feign;
 
+import com.emazon.transaction.domain.utils.TokenContainer;
 import feign.RequestInterceptor;
 import feign.RequestTemplate;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Component;
 
 @Component
 public class FeignInterceptor implements RequestInterceptor {
     private static final String AUTHORIZATION_HEADER = "Authorization";
-    private static final String TOKEN_TYPE = "Bearer";
 
     @Override
     public void apply(RequestTemplate requestTemplate) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        if(authentication != null && authentication.getPrincipal() != null) {
-            User user = (User) authentication.getPrincipal();
-            requestTemplate.header(AUTHORIZATION_HEADER, TOKEN_TYPE + user.getPassword());
+        if(authentication != null) {
+            requestTemplate.header(AUTHORIZATION_HEADER, TokenContainer.getToken());
         }
     }
 
