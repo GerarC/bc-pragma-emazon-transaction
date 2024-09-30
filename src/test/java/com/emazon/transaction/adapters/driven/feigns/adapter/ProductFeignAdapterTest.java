@@ -41,4 +41,13 @@ class ProductFeignAdapterTest {
         doThrow(EntityNotFoundException.class).when(productFeign).addSupply(eq(id), any());
         assertThrows(EntityNotFoundException.class, () -> productFeignAdapter.incrementQuantity(id, quantity));
     }
+
+    @Test
+    void decrementQuantity() {
+        Long id = 1L;
+        Long quantity = 2L;
+        doNothing().when(productFeign).removeSupply(eq(id), any());
+        productFeignAdapter.decrementQuantity(id, quantity);
+        verify(productFeign).removeSupply(eq(id), any());
+    }
 }

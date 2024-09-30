@@ -20,7 +20,6 @@ import java.util.List;
 public class SaleController {
     private final SaleService saleService;
 
-    // TODO: SWAGGER DOCUMENTATION
     @PostMapping
     public ResponseEntity<List<SaleResponse>> registerSale(@RequestBody @Valid SaleItemsRequest request){
         saleService.saveSale(request);
