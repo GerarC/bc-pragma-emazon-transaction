@@ -1,8 +1,8 @@
-package com.emazon.transaction.adapters.driving.rest.service.impl;
+package com.emazon.transaction.adapters.driving.rest.v1.service.impl;
 
-import com.emazon.transaction.adapters.driving.rest.dto.request.SupplyRequest;
-import com.emazon.transaction.adapters.driving.rest.mapper.request.SupplyRequestMapper;
-import com.emazon.transaction.adapters.driving.rest.service.SupplyService;
+import com.emazon.transaction.adapters.driving.rest.v1.dto.request.SupplyRequest;
+import com.emazon.transaction.adapters.driving.rest.v1.mapper.request.SupplyRequestMapper;
+import com.emazon.transaction.adapters.driving.rest.v1.service.SupplyService;
 import com.emazon.transaction.domain.api.SupplyServicePort;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

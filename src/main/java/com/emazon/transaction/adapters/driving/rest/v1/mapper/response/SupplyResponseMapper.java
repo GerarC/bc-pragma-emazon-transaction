@@ -1,7 +1,6 @@
-package com.emazon.transaction.adapters.driving.rest.mapper.response;
+package com.emazon.transaction.adapters.driving.rest.v1.mapper.response;
 
-import com.emazon.transaction.adapters.driving.rest.dto.request.SupplyRequest;
-import com.emazon.transaction.adapters.driving.rest.dto.response.SupplyResponse;
+import com.emazon.transaction.adapters.driving.rest.v1.dto.response.SupplyResponse;
 import com.emazon.transaction.domain.model.Supply;
 import org.mapstruct.Mapper;
 import org.mapstruct.ReportingPolicy;

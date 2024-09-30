@@ -5,10 +5,14 @@ import com.emazon.transaction.adapters.driven.feigns.client.ProductFeign;
 import com.emazon.transaction.adapters.driven.jpa.adapter.SupplyJpaAdapter;
 import com.emazon.transaction.adapters.driven.jpa.mapper.SupplyEntityMapper;
 import com.emazon.transaction.adapters.driven.jpa.persistence.SupplyRepository;
+import com.emazon.transaction.domain.api.SaleServicePort;
 import com.emazon.transaction.domain.api.SupplyServicePort;
+import com.emazon.transaction.domain.api.usecase.SaleUseCase;
 import com.emazon.transaction.domain.api.usecase.SupplyUseCase;
 import com.emazon.transaction.domain.spi.ProductPersistencePort;
+import com.emazon.transaction.domain.spi.SalePersistencePort;
 import com.emazon.transaction.domain.spi.SupplyPersistencePort;
+import com.emazon.transaction.domain.spi.UserPersistencePort;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -22,23 +26,19 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 @RequiredArgsConstructor
 public class BeanConfiguration {
     private final UserDetailsService userDetailsService;
-    private final SupplyRepository supplyRepository;
-    private final SupplyEntityMapper supplyEntityMapper;
-    private final ProductFeign productFeign;
+    private final SupplyPersistencePort supplyPersistencePort;
+    private final ProductPersistencePort productPersistencePort;
+    private final UserPersistencePort userPersistencePort;
+    private final SalePersistencePort salePersistencePort;
 
     @Bean
-    SupplyPersistencePort supplyPersistencePort(){
-        return new SupplyJpaAdapter(supplyRepository, supplyEntityMapper);
+    SupplyServicePort supplyServicePort() {
+        return new SupplyUseCase(supplyPersistencePort, productPersistencePort, userPersistencePort);
     }
 
     @Bean
-    ProductPersistencePort productPersistencePort(){
-        return new ProductFeignAdapter(productFeign);
-    }
-
-    @Bean
-    SupplyServicePort supplyServicePort(){
-        return new SupplyUseCase(supplyPersistencePort(), productPersistencePort());
+    SaleServicePort saleServicePort() {
+        return new SaleUseCase(salePersistencePort, userPersistencePort, productPersistencePort);
     }
 
 
@@ -55,4 +55,4 @@ public class BeanConfiguration {
         return daoAuthenticationProvider;
     }
 
-  }
+}

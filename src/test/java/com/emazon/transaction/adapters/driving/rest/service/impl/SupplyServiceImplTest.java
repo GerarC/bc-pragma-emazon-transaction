@@ -1,8 +1,8 @@
 package com.emazon.transaction.adapters.driving.rest.service.impl;
 
-import com.emazon.transaction.adapters.driving.rest.dto.request.SupplyRequest;
-import com.emazon.transaction.adapters.driving.rest.mapper.request.SupplyRequestMapper;
-import com.emazon.transaction.adapters.driving.rest.service.SupplyService;
+import com.emazon.transaction.adapters.driving.rest.v1.dto.request.SupplyRequest;
+import com.emazon.transaction.adapters.driving.rest.v1.mapper.request.SupplyRequestMapper;
+import com.emazon.transaction.adapters.driving.rest.v1.service.impl.SupplyServiceImpl;
 import com.emazon.transaction.domain.api.SupplyServicePort;
 import com.emazon.transaction.domain.model.Supply;
 import org.junit.jupiter.api.BeforeEach;
@@ -11,7 +11,6 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 class SupplyServiceImplTest {

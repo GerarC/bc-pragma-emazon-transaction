@@ -1,4 +1,4 @@
-package com.emazon.transaction.adapters.driving.rest.dto.response;
+package com.emazon.transaction.adapters.driving.rest.v1.dto.response;
 
 import lombok.*;
 

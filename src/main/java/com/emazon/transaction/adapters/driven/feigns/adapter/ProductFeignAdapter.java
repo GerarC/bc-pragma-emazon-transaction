@@ -7,7 +7,9 @@ import com.emazon.transaction.domain.spi.ProductPersistencePort;
 import com.emazon.transaction.domain.utils.DomainConstants;
 import feign.FeignException;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Component;
 
+@Component
 @RequiredArgsConstructor
 public class ProductFeignAdapter implements ProductPersistencePort {
     private final ProductFeign productFeign;
@@ -17,6 +19,16 @@ public class ProductFeignAdapter implements ProductPersistencePort {
         ProductRequest productRequest = new ProductRequest(quantity);
         try{
             productFeign.addSupply(productId, productRequest);
+        } catch (FeignException.NotFound e) {
+            throw new EntityNotFoundException(String.format(DomainConstants.PRODUCT_NOT_FOUND_MESSAGE, productId));
+        }
+    }
+
+    @Override
+    public void decrementQuantity(Long productId, Long quantity) {
+        ProductRequest productRequest = new ProductRequest(quantity);
+        try{
+            productFeign.removeSupply(productId, productRequest);
         } catch (FeignException.NotFound e) {
             throw new EntityNotFoundException(String.format(DomainConstants.PRODUCT_NOT_FOUND_MESSAGE, productId));
         }

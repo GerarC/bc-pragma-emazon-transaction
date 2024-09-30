@@ -1,12 +1,11 @@
-package com.emazon.transaction.adapters.driving.rest.controller;
+package com.emazon.transaction.adapters.driving.rest.v1.controller;
 
-import com.emazon.transaction.adapters.driving.rest.dto.request.SupplyRequest;
-import com.emazon.transaction.adapters.driving.rest.dto.response.SupplyResponse;
-import com.emazon.transaction.adapters.driving.rest.service.SupplyService;
-import com.emazon.transaction.adapters.driving.rest.utils.RestConstants;
+import com.emazon.transaction.adapters.driving.rest.v1.dto.request.SupplyRequest;
+import com.emazon.transaction.adapters.driving.rest.v1.dto.response.SupplyResponse;
+import com.emazon.transaction.adapters.driving.rest.v1.service.SupplyService;
+import com.emazon.transaction.adapters.driving.rest.v1.utils.RestConstants;
 import com.emazon.transaction.configuration.advice.responses.ExceptionResponse;
 import com.emazon.transaction.configuration.advice.responses.ValidationExceptionResponse;
-import com.emazon.transaction.domain.utils.TokenContainer;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -19,7 +18,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/supply")
+@RequestMapping("/v1/supply")
 @RequiredArgsConstructor
 public class SupplyController {
     private final SupplyService supplyService;
@@ -32,9 +31,7 @@ public class SupplyController {
     })
     @PostMapping
     ResponseEntity<SupplyResponse> save(
-            @RequestHeader("Authorization") String token,
             @RequestBody @Valid SupplyRequest supplyRequest) {
-        TokenContainer.setToken(token);
         supplyService.save(supplyRequest);
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }

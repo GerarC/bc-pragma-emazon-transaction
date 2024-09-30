@@ -5,7 +5,9 @@ import com.emazon.transaction.adapters.driven.jpa.persistence.SupplyRepository;
 import com.emazon.transaction.domain.model.Supply;
 import com.emazon.transaction.domain.spi.SupplyPersistencePort;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Component;
 
+@Component
 @RequiredArgsConstructor
 public class SupplyJpaAdapter implements SupplyPersistencePort {
 

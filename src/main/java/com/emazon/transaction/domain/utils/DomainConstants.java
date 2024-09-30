@@ -9,4 +9,5 @@ public class DomainConstants {
 
     public static final String PRODUCT_ID_FIELD_NULL_MESSAGE = "Product id cannot be null";
     public static final String QUANTITY_FIELD_NULL_MESSAGE = "Quantity cannot be null";
+    public static final String NOT_CURRENT_USER_MESSAGE = "There isn't valid current user";
 }

@@ -1,5 +1,6 @@
 package com.emazon.transaction.configuration.security.filter;
 
+import com.emazon.transaction.domain.utils.TokenContainer;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -34,6 +35,7 @@ public class JwtAuthorizationFilter extends OncePerRequestFilter {
             return;
         }
 
+        TokenContainer.setToken(authorizationHeader);
         jwt = authorizationHeader.substring(7);
 
         UserDetails user = userDetailsService.loadUserByUsername(jwt);

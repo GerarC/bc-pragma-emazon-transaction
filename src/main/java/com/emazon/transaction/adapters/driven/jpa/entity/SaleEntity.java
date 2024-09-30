@@ -11,11 +11,11 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@Table(name = "supply")
-public class SupplyEntity {
+@Table(name = "sale")
+public class SaleEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "supply_id")
+    @Column(name = "sale_id")
     private Long id;
 
     @Column(name = "product_id", nullable = false)

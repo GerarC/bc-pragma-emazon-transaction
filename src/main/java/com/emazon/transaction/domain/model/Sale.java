@@ -2,14 +2,14 @@ package com.emazon.transaction.domain.model;
 
 import java.time.LocalDateTime;
 
-public class Supply {
+public class Sale {
     private Long id;
     private Long productId;
     private Long quantity;
     private String userId;
     private LocalDateTime timestamp;
 
-    public Supply(Long id, Long productId, Long quantity, String userId, LocalDateTime timestamp) {
+    public Sale(Long id, Long productId, Long quantity, String userId, LocalDateTime timestamp) {
         this.id = id;
         this.productId = productId;
         this.quantity = quantity;
@@ -17,7 +17,7 @@ public class Supply {
         this.timestamp = timestamp;
     }
 
-    public Supply() {
+    public Sale() {
     }
 
     public Long getId() {

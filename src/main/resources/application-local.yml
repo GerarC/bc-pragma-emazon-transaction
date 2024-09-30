@@ -22,13 +22,16 @@ logging:
 
 server:
     port: 8092
+    servlet:
+        context-path: ${EMAZON_TRANSACTION_CONTEXT_PATH:/emazon/transaction}
+
 
 allowed-origins:
     http://localhost:3000/,
     *,
 
 emazon:
-    stock:
-        base-url: localhost:8091
     user:
-        base-url: localhost:8090
+        base-url: localhost:8090/emazon/user
+    stock:
+        base-url: localhost:8091/emazon/stock

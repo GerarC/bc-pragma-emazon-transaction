@@ -13,7 +13,7 @@ import java.util.List;
         unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public interface SupplyEntityMapper {
     SupplyEntity toEntity(Supply supply);
-    List<Supply> toEntities(List<SupplyEntity> supplyEntities);
+    List<SupplyEntity> toEntities(List<Supply> supplies);
     Supply toDomain(SupplyEntity supplyEntity);
     List<Supply> toDomains(List<SupplyEntity> supplyEntities);
 }

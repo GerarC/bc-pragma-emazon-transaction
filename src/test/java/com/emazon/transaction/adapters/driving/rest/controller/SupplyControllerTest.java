@@ -1,8 +1,9 @@
 package com.emazon.transaction.adapters.driving.rest.controller;
 
-import com.emazon.transaction.adapters.driving.rest.dto.request.SupplyRequest;
-import com.emazon.transaction.adapters.driving.rest.service.SupplyService;
-import com.emazon.transaction.adapters.driving.rest.utils.JsonParser;
+import com.emazon.transaction.adapters.driving.rest.v1.controller.SupplyController;
+import com.emazon.transaction.adapters.driving.rest.v1.dto.request.SupplyRequest;
+import com.emazon.transaction.adapters.driving.rest.v1.service.SupplyService;
+import com.emazon.transaction.adapters.driving.rest.v1.utils.JsonParser;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.MockitoAnnotations;

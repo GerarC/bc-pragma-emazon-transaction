@@ -8,8 +8,8 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
-@FeignClient(name = "USER-MICROSERVICE", url = "${emazon.user.base-url}", configuration = FeignClientConfiguration.class)
+@FeignClient(name = "AUTHORIZATION-MICROSERVICE", url = "${emazon.user.base-url}", configuration = FeignClientConfiguration.class)
 public interface AuthorizationFeign {
-    @PostMapping(value = "/auth/authorize", consumes = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value = "/v1/auth/authorize", consumes = MediaType.APPLICATION_JSON_VALUE)
     AuthorizationResponse authorize(@RequestBody AuthorizationRequest authorizationRequest);
 }

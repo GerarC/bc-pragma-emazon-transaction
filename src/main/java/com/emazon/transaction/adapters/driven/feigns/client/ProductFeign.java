@@ -8,8 +8,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
-@FeignClient(name = "STOCK-MICROSERVICE", url = "${emazon.stock.base-url}", configuration = FeignClientConfiguration.class)
+@FeignClient(name = "STOCK-MICROSERVICE", url = "${emazon.stock.base-url}" + "/v1/products", configuration = FeignClientConfiguration.class)
 public interface ProductFeign {
-    @PutMapping(value = "/products/{id}/add-supply", produces = MediaType.APPLICATION_JSON_VALUE)
+    @PutMapping(value = "/{id}/add-supply", produces = MediaType.APPLICATION_JSON_VALUE)
     void addSupply(@PathVariable Long id, @RequestBody ProductRequest productRequest);
+
+    @PutMapping(value = "/{id}/remove-supply", produces = MediaType.APPLICATION_JSON_VALUE)
+    void removeSupply(@PathVariable Long id, @RequestBody ProductRequest productRequest);
 }
